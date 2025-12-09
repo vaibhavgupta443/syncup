@@ -537,7 +537,9 @@
     pointer-events: none;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
 @media (max-width: 1024px) {
     .content-wrapper {
         grid-template-columns: 1fr;
@@ -548,23 +550,235 @@
         top: 0;
         order: -1;
     }
+
+    .sidebar-card {
+        max-width: 100%;
+    }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
     .hero-banner {
-        height: 320px;
+        height: 280px;
+    }
+
+    .hero-content {
+        padding-bottom: 30px;
+    }
+
+    .back-link {
+        padding: 10px 18px;
+        font-size: 13px;
+        top: 16px;
+    }
+
+    .hero-badges {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .status-badge,
+    .category-badge,
+    .owner-badge {
+        padding: 6px 12px;
+        font-size: 10px;
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        margin-bottom: 14px;
     }
 
     .hero-info {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    .content-wrapper {
+        padding: 24px 0 60px;
+        gap: 20px;
+    }
+
+    .main-column {
+        gap: 16px;
     }
 
     .info-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .info-card h2 {
+        font-size: 16px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+    }
+
+    .info-card h2::before {
+        height: 16px;
+        width: 3px;
+    }
+
+    .detail-row {
+        gap: 12px;
+    }
+
+    .detail-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+        border-radius: 12px;
+    }
+
+    .detail-row span:not(.detail-icon) {
+        font-size: 14px;
+    }
+
+    .avatar-circle {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+    }
+
+    .organizer-row strong {
+        font-size: 16px;
+    }
+
+    .participant-row {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    .avatar-small {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+
+    .request-row {
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .request-buttons {
+        width: 100%;
+    }
+
+    .approve-btn,
+    .reject-btn {
+        flex: 1;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .sidebar-card {
         padding: 24px;
+        border-radius: 20px;
+    }
+
+    .price-value {
+        font-size: 36px;
+    }
+
+    .price-free {
+        font-size: 30px;
+    }
+
+    .spots-box {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+
+    .spots-number {
+        font-size: 28px;
+    }
+
+    .join-button {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .chat-section {
+        padding: 16px;
+    }
+}
+
+/* Small Mobile (iPhone SE) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .hero-banner {
+        height: 240px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .back-link {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .info-card {
+        padding: 16px;
+    }
+
+    .info-card h2 {
+        font-size: 14px;
+    }
+
+    .detail-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .details-list {
+        gap: 14px;
+    }
+
+    .participant-row {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .avatar-small {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+
+    .sidebar-card {
+        padding: 20px;
+    }
+
+    .price-value {
+        font-size: 32px;
+    }
+
+    .spots-number {
+        font-size: 24px;
+    }
+
+    .spots-text {
+        font-size: 13px;
+    }
+
+    .status-box {
+        padding: 18px;
+    }
+
+    .status-box span {
+        font-size: 15px;
     }
 }

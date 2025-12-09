@@ -218,3 +218,106 @@
     background: linear-gradient(135deg, #d1fae5, #a7f3d0);
     border-radius: 20px;
 }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .activity-card {
+        border-radius: 16px;
+    }
+
+    .card-image-wrapper {
+        height: 160px;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-description {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .card-info {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .info-row {
+        font-size: 12px;
+    }
+
+    .host-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .host-name {
+        font-size: 13px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .price.free {
+        font-size: 14px;
+        padding: 5px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-image-wrapper {
+        height: 140px;
+    }
+
+    .card-badges {
+        gap: 6px;
+    }
+
+    .status-tag,
+    .category-tag {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    .card-info {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .card-footer {
+        padding-top: 12px;
+    }
+
+    .host-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .host-name {
+        font-size: 12px;
+    }
+
+    .host-rating {
+        font-size: 11px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+}
