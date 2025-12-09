@@ -1,7 +1,6 @@
 .chatbox-container {
-    background: var(--bg-card);
+    background: var(--bg-secondary);
     border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     height: 400px;
@@ -10,7 +9,7 @@
 
 .chatbox-header {
     padding: var(--spacing-md) var(--spacing-lg);
-    background: var(--bg-secondary);
+    background: var(--bg-card);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
@@ -20,7 +19,8 @@
 .chatbox-header h4 {
     margin: 0;
     color: var(--text-primary);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
 }
 
 .online-indicator {
@@ -36,6 +36,19 @@
     height: 8px;
     border-radius: 50%;
     background: var(--success);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .chatbox-messages {
@@ -44,15 +57,17 @@
     padding: var(--spacing-md);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
+    background: var(--bg-tertiary);
 }
 
 .message {
-    max-width: 80%;
+    max-width: 75%;
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--border-radius-sm);
     font-size: var(--font-size-sm);
-    line-height: 1.4;
+    line-height: 1.5;
+    position: relative;
 }
 
 .message-own {
@@ -64,8 +79,9 @@
 
 .message-other {
     align-self: flex-start;
-    background: var(--bg-secondary);
+    background: var(--bg-card);
     color: var(--text-primary);
+    border: 1px solid var(--border-color);
     border-bottom-left-radius: 4px;
 }
 
@@ -74,6 +90,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 4px;
+    gap: var(--spacing-sm);
 }
 
 .message-sender {
@@ -82,7 +99,7 @@
 }
 
 .message-own .message-sender {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .message-other .message-sender {
@@ -91,7 +108,7 @@
 
 .message-time {
     font-size: 10px;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .message-content {
@@ -100,7 +117,7 @@
 
 .chatbox-input {
     padding: var(--spacing-md);
-    background: var(--bg-secondary);
+    background: var(--bg-card);
     border-top: 1px solid var(--border-color);
 }
 
@@ -113,10 +130,11 @@
     flex: 1;
     padding: var(--spacing-sm) var(--spacing-md);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    background: var(--bg-card);
+    border-radius: 20px;
+    background: var(--bg-secondary);
     color: var(--text-primary);
     font-size: var(--font-size-sm);
+    transition: border-color var(--transition-base);
 }
 
 .chatbox-input input:focus {
@@ -129,28 +147,35 @@
 }
 
 .send-btn {
-    padding: var(--spacing-sm) var(--spacing-md);
+    width: 40px;
+    height: 40px;
+    padding: 0;
     background: var(--primary-color);
     color: #ffffff;
     border: none;
-    border-radius: var(--border-radius-sm);
+    border-radius: 50%;
     cursor: pointer;
     transition: all var(--transition-base);
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
 }
 
 .send-btn:hover {
     background: var(--primary-hover);
+    transform: scale(1.05);
 }
 
 .send-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
 }
 
 .no-messages {
     text-align: center;
     color: var(--text-muted);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-2xl);
     font-size: var(--font-size-sm);
 }
