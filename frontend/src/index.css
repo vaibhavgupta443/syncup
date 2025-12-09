@@ -574,6 +574,7 @@ select.input {
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 768px) {
   :root {
     --font-size-3xl: 1.75rem;
@@ -582,8 +583,20 @@ select.input {
     --spacing-xl: 1.5rem;
   }
 
+  /* Nuclear Reset for Mobile */
+  html,
+  body,
+  #root,
+  .app {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
   .container {
-    padding: 0 12px;
+    padding: 0 8px;
     width: 100%;
     max-width: 100%;
   }
@@ -594,5 +607,12 @@ select.input {
 
   .activities-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Extra Small Devices (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .container {
+    padding: 0 4px;
   }
 }
