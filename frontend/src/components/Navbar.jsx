@@ -4,7 +4,7 @@ import { logout } from '../redux/slices/authSlice';
 import '../styles/Navbar.css';
 
 /**
- * Main navigation bar component with premium branding.
+ * Main navigation bar with professional blue branding.
  */
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -21,18 +21,17 @@ const Navbar = () => {
             <div className="navbar-container">
                 <Link to="/" className="navbar-brand">
                     <div className="brand-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <defs>
                                 <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stopColor="#f97316" />
-                                    <stop offset="50%" stopColor="#ec4899" />
-                                    <stop offset="100%" stopColor="#8b5cf6" />
+                                    <stop offset="0%" stopColor="#0ea5e9" />
+                                    <stop offset="100%" stopColor="#06b6d4" />
                                 </linearGradient>
                             </defs>
-                            <circle cx="16" cy="16" r="14" stroke="url(#brandGradient)" strokeWidth="3" fill="none" />
-                            <path d="M10 16C10 13 12 10 16 10C20 10 22 13 22 16" stroke="url(#brandGradient)" strokeWidth="2.5" strokeLinecap="round" />
-                            <path d="M10 16C10 19 12 22 16 22C20 22 22 19 22 16" stroke="url(#brandGradient)" strokeWidth="2.5" strokeLinecap="round" />
-                            <circle cx="16" cy="16" r="3" fill="url(#brandGradient)" />
+                            <circle cx="18" cy="18" r="16" fill="url(#brandGradient)" />
+                            <path d="M12 14C12 14 14 18 18 18C22 18 24 14 24 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                            <path d="M12 22C12 22 14 18 18 18C22 18 24 22 24 22" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                            <circle cx="18" cy="18" r="3" fill="white" />
                         </svg>
                     </div>
                     <span className="brand-text">SyncUp</span>

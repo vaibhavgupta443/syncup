@@ -1,4 +1,4 @@
-/* ========== PREMIUM NAVBAR ========== */
+/* ========== PREMIUM NAVBAR - BLUE THEME ========== */
 
 .navbar {
     background: #ffffff;
@@ -35,9 +35,9 @@
 
 .brand-text {
     font-family: 'Outfit', 'Inter', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6);
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -62,8 +62,8 @@
 }
 
 .nav-link:hover {
-    color: #1a1a1a;
-    background: #f3f4f6;
+    color: #0ea5e9;
+    background: #f0f9ff;
 }
 
 /* Logout Button */
@@ -81,13 +81,13 @@
 }
 
 .btn-logout:hover {
-    border-color: #1a1a1a;
-    color: #1a1a1a;
+    border-color: #0ea5e9;
+    color: #0ea5e9;
 }
 
 /* Get Started Button */
 .btn-get-started {
-    background: linear-gradient(135deg, #f97316, #ec4899);
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
     color: #fff;
     padding: 12px 24px;
     border-radius: 10px;
@@ -95,12 +95,12 @@
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .btn-get-started:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
 }
 
 /* Responsive */

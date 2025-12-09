@@ -7,14 +7,21 @@ import ActivityCard from '../components/ActivityCard';
 import Button from '../components/Button';
 import '../styles/Dashboard.css';
 
-// Category showcase with WORKING images
+// Category showcase with VERIFIED WORKING images
 const categoryShowcase = [
-    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1461896836934-56192fce9c14?w=400&q=80', color: '#10b981' },
-    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&q=80', color: '#8b5cf6' },
-    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80', color: '#ef4444' },
-    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80', color: '#f59e0b' },
-    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80', color: '#ec4899' },
-    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80', color: '#06b6d4' },
+    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&q=80', color: '#10b981' },
+    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80', color: '#8b5cf6' },
+    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&q=80', color: '#ef4444' },
+    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80', color: '#f59e0b' },
+    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', color: '#ec4899' },
+    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80', color: '#06b6d4' },
+];
+
+// Featured hosts with images
+const featuredHosts = [
+    { name: 'Alex', rating: 4.9, activities: 45, image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80' },
+    { name: 'Sarah', rating: 4.8, activities: 32, image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80' },
+    { name: 'Mike', rating: 4.9, activities: 28, image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80' },
 ];
 
 const Dashboard = () => {
@@ -76,63 +83,52 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
-            {/* Premium Hero with Gradient Overlay */}
+            {/* Hero with Background Image */}
             <div className="dashboard-hero">
                 <div className="hero-bg">
                     <img
-                        src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1800&q=80"
-                        alt="Celebration"
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1800&q=80"
+                        alt="Friends having fun"
                         className="hero-bg-image"
                     />
                     <div className="hero-gradient"></div>
-                    <div className="hero-particles"></div>
                 </div>
                 <div className="hero-content-wrapper">
                     <div className="container">
                         <div className="hero-content">
                             <div className="hero-badge">🎉 Welcome back, {user?.fullName?.split(' ')[0]}!</div>
                             <h1 className="hero-title">
-                                Find Your Next <span className="gradient-text">Adventure</span>
+                                Find Your <span className="gradient-text">Perfect Match</span>
                             </h1>
-                            <p className="hero-subtitle">Connect with amazing people who share your passions. Join activities, make memories.</p>
+                            <p className="hero-subtitle">Connect with amazing people. Join activities you love. Make memories together.</p>
                             <div className="hero-actions">
                                 <button className="btn-hero-primary" onClick={() => navigate('/activities')}>
                                     <span>Explore Activities</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
+                                    <span>→</span>
                                 </button>
                                 <button className="btn-hero-secondary" onClick={() => navigate('/activities/create')}>
                                     Create Activity
                                 </button>
                             </div>
+                        </div>
 
-                            {/* Floating Stats */}
-                            <div className="hero-stats">
-                                <div className="hero-stat">
-                                    <span className="stat-number">10K+</span>
-                                    <span className="stat-text">Active Users</span>
-                                </div>
-                                <div className="stat-divider"></div>
-                                <div className="hero-stat">
-                                    <span className="stat-number">5K+</span>
-                                    <span className="stat-text">Activities</span>
-                                </div>
-                                <div className="stat-divider"></div>
-                                <div className="hero-stat">
-                                    <span className="stat-number">100+</span>
-                                    <span className="stat-text">Cities</span>
-                                </div>
-                            </div>
+                        {/* Hero Side Image */}
+                        <div className="hero-side-image">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Team collaboration" />
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="container main-content">
-                {/* Quick Match - Glassmorphism Card */}
+                {/* Quick Match with Background */}
                 <div className="quick-match-card">
-                    <div className="quick-match-glow"></div>
+                    <img
+                        src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80"
+                        alt="Quick Match background"
+                        className="quick-match-bg"
+                    />
+                    <div className="quick-match-overlay"></div>
                     <div className="quick-match-inner">
                         <div className="quick-match-icon">⚡</div>
                         <div className="quick-match-text">
@@ -140,8 +136,7 @@ const Dashboard = () => {
                             <p>Let AI find your perfect activity match!</p>
                         </div>
                         <button className="quick-match-btn" onClick={handleQuickMatch}>
-                            Find Match
-                            <span className="btn-arrow">→</span>
+                            Find Match →
                         </button>
                     </div>
                 </div>
@@ -158,44 +153,63 @@ const Dashboard = () => {
                                 key={cat.name}
                                 className="category-card"
                                 onClick={() => navigate(`/activities?category=${cat.name.toUpperCase()}`)}
-                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 <img src={cat.image} alt={cat.name} className="category-image" />
                                 <div className="category-overlay">
                                     <span className="category-emoji">{cat.emoji}</span>
                                     <span className="category-name">{cat.name}</span>
                                 </div>
-                                <div className="category-shine"></div>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Stats Banner - Gradient */}
+                {/* Stats Banner with Background */}
                 <div className="stats-banner">
+                    <img
+                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
+                        alt="Community"
+                        className="stats-banner-bg"
+                    />
+                    <div className="stats-banner-overlay"></div>
                     <div className="stats-banner-content">
                         <div className="banner-stat">
-                            <div className="banner-stat-icon">🎯</div>
                             <div className="banner-stat-value">5,000+</div>
                             <div className="banner-stat-label">Activities Done</div>
                         </div>
                         <div className="banner-stat">
-                            <div className="banner-stat-icon">🤝</div>
                             <div className="banner-stat-value">12,000+</div>
                             <div className="banner-stat-label">Connections</div>
                         </div>
                         <div className="banner-stat">
-                            <div className="banner-stat-icon">🌍</div>
                             <div className="banner-stat-value">100+</div>
                             <div className="banner-stat-label">Cities</div>
                         </div>
                         <div className="banner-stat">
-                            <div className="banner-stat-icon">⭐</div>
                             <div className="banner-stat-value">4.9</div>
                             <div className="banner-stat-label">Avg Rating</div>
                         </div>
                     </div>
                 </div>
+
+                {/* Featured Hosts */}
+                <section className="hosts-section">
+                    <div className="section-header">
+                        <h2>⭐ Top Hosts</h2>
+                        <p className="text-muted">Learn from the best</p>
+                    </div>
+                    <div className="hosts-grid">
+                        {featuredHosts.map((host) => (
+                            <div key={host.name} className="host-card">
+                                <img src={host.image} alt={host.name} className="host-image" />
+                                <div className="host-info">
+                                    <h4>{host.name}</h4>
+                                    <p>⭐ {host.rating} • {host.activities} activities</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
                 {/* Countdown Timer */}
                 {nextActivity && (
@@ -231,28 +245,28 @@ const Dashboard = () => {
                 {/* User Stats */}
                 {profile && (
                     <div className="user-stats-grid">
-                        <div className="user-stat-card gradient-1">
+                        <div className="user-stat-card stat-1">
                             <div className="stat-icon-wrapper">⭐</div>
                             <div className="stat-content">
                                 <span className="stat-value">{profile.averageRating?.toFixed(1) || '0.0'}</span>
                                 <span className="stat-label">Your Rating</span>
                             </div>
                         </div>
-                        <div className="user-stat-card gradient-2">
+                        <div className="user-stat-card stat-2">
                             <div className="stat-icon-wrapper">🎯</div>
                             <div className="stat-content">
                                 <span className="stat-value">{profile.totalActivities || 0}</span>
                                 <span className="stat-label">Activities</span>
                             </div>
                         </div>
-                        <div className="user-stat-card gradient-3">
+                        <div className="user-stat-card stat-3">
                             <div className="stat-icon-wrapper">🏆</div>
                             <div className="stat-content">
                                 <span className="stat-value">{profile.experienceTag || 'Newbie'}</span>
                                 <span className="stat-label">Level</span>
                             </div>
                         </div>
-                        <div className="user-stat-card gradient-4">
+                        <div className="user-stat-card stat-4">
                             <div className="stat-icon-wrapper">📍</div>
                             <div className="stat-content">
                                 <span className="stat-value">{profile.location || '—'}</span>
@@ -278,7 +292,7 @@ const Dashboard = () => {
                         </div>
                     ) : recommendations.length === 0 ? (
                         <div className="empty-card">
-                            <div className="empty-icon">🎯</div>
+                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=300&q=80" alt="Get Started" className="empty-image" />
                             <h3>No Recommendations Yet</h3>
                             <p>Complete your profile to get personalized suggestions</p>
                             <Link to="/profile/create">
@@ -320,20 +334,20 @@ const Dashboard = () => {
                     </section>
                 )}
 
-                {/* CTA Footer */}
+                {/* CTA Footer with Image */}
                 <div className="cta-footer">
+                    <img
+                        src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80"
+                        alt="Friends at dinner"
+                        className="cta-footer-bg"
+                    />
+                    <div className="cta-footer-overlay"></div>
                     <div className="cta-content">
                         <h2>Ready to host an activity?</h2>
                         <p>Bring people together and create memorable experiences</p>
                         <button className="cta-btn" onClick={() => navigate('/activities/create')}>
-                            Create Activity
-                            <span>→</span>
+                            Create Activity →
                         </button>
-                    </div>
-                    <div className="cta-decoration">
-                        <div className="cta-circle cta-circle-1"></div>
-                        <div className="cta-circle cta-circle-2"></div>
-                        <div className="cta-circle cta-circle-3"></div>
                     </div>
                 </div>
             </div>
