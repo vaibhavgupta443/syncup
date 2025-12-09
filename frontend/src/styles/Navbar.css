@@ -1,77 +1,120 @@
+/* ========== PREMIUM NAVBAR ========== */
+
 .navbar {
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-md) 0;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
 }
 
 .navbar-container {
-    max-width: 1400px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 24px;
+    height: 72px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
+/* Brand */
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 12px;
     text-decoration: none;
 }
 
-.brand-logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    object-fit: cover;
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .brand-text {
-    font-family: var(--font-brand);
+    font-family: 'Outfit', 'Inter', sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
+    font-weight: 800;
+    background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: -0.5px;
 }
 
+/* Navigation Menu */
 .navbar-menu {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 8px;
 }
 
 .nav-link {
-    color: var(--text-secondary);
+    color: #4b5563;
     text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
     font-weight: 500;
-    font-size: var(--font-size-sm);
-    transition: color var(--transition-fast);
-    padding: var(--spacing-xs) var(--spacing-sm);
+    transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-    color: var(--text-primary);
+    color: #1a1a1a;
+    background: #f3f4f6;
 }
 
-.nav-link.active {
-    color: var(--text-primary);
+/* Logout Button */
+.btn-logout {
+    background: transparent;
+    border: 1.5px solid #e5e7eb;
+    color: #4b5563;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 8px;
 }
 
-@media (max-width: 768px) {
-    .navbar-menu {
-        gap: var(--spacing-sm);
-    }
+.btn-logout:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+}
 
-    .nav-link {
-        font-size: var(--font-size-xs);
+/* Get Started Button */
+.btn-get-started {
+    background: linear-gradient(135deg, #f97316, #ec4899);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+.btn-get-started:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-container {
+        height: 64px;
     }
 
     .brand-text {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
+    }
+
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 13px;
     }
 }

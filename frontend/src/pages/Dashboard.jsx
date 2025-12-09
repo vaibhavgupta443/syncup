@@ -7,9 +7,9 @@ import ActivityCard from '../components/ActivityCard';
 import Button from '../components/Button';
 import '../styles/Dashboard.css';
 
-// Category showcase with vibrant images
+// Category showcase with WORKING images
 const categoryShowcase = [
-    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=400&q=80', color: '#10b981' },
+    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1461896836934-56192fce9c14?w=400&q=80', color: '#10b981' },
     { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&q=80', color: '#8b5cf6' },
     { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80', color: '#ef4444' },
     { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80', color: '#f59e0b' },
