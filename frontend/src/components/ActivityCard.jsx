@@ -1,25 +1,44 @@
 import '../styles/ActivityCard.css';
 
-// Category images from Unsplash (high quality)
+// Category images from Unsplash - ALL UNIQUE
 const categoryImages = {
-    SPORTS: 'https://images.unsplash.com/photo-1461896836934- voices-of-the-stadium?w=400&q=80',
-    TENNIS: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80',
-    FOOTBALL: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&q=80',
+    // Sports
+    SPORTS: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80',
+    TENNIS: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&q=80',
+    FOOTBALL: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&q=80',
     CRICKET: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400&q=80',
     BADMINTON: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&q=80',
-    MUSIC: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&q=80',
-    STUDY: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',
-    GAMING: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&q=80',
-    FITNESS: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80',
-    OUTDOOR: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',
+    BASKETBALL: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&q=80',
+
+    // Entertainment & Hobbies
+    MUSIC: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80',
+    STUDY: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&q=80',
+    GAMING: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80',
+    READING: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&q=80',
+
+    // Fitness & Outdoor
+    FITNESS: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80',
+    YOGA: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?w=400&q=80',
+    OUTDOOR: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=400&q=80',
     HIKING: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',
-    SOCIAL: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80',
-    FOOD: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80',
-    ART: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80',
-    TRAVEL: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80',
-    YOGA: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80',
-    DANCE: 'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=400&q=80',
-    DEFAULT: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80'
+    CYCLING: 'https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=400&q=80',
+
+    // Social & Lifestyle  
+    SOCIAL: 'https://images.unsplash.com/photo-1543807535-eceef0bc6599?w=400&q=80',
+    FOOD: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80',
+    COOKING: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&q=80',
+
+    // Creative
+    ART: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&q=80',
+    PHOTOGRAPHY: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=80',
+    DANCE: 'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&q=80',
+
+    // Travel & Adventure
+    TRAVEL: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80',
+    ADVENTURE: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80',
+
+    // Default
+    DEFAULT: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&q=80'
 };
 
 /**

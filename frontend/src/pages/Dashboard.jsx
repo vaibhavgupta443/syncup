@@ -7,14 +7,14 @@ import ActivityCard from '../components/ActivityCard';
 import Button from '../components/Button';
 import '../styles/Dashboard.css';
 
-// Category showcase images
+// Category showcase with UNIQUE images
 const categoryShowcase = [
-    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1461896836934- voices-of-the-stadium?w=300&q=80', color: '#10b981' },
-    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300&q=80', color: '#8b5cf6' },
-    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=300&q=80', color: '#ef4444' },
-    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&q=80', color: '#f59e0b' },
-    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80', color: '#ec4899' },
-    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=300&q=80', color: '#06b6d4' },
+    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80', color: '#10b981' },
+    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80', color: '#8b5cf6' },
+    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80', color: '#ef4444' },
+    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80', color: '#f59e0b' },
+    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', color: '#ec4899' },
+    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80', color: '#06b6d4' },
 ];
 
 /**
@@ -27,7 +27,6 @@ const Dashboard = () => {
     const { profile } = useSelector((state) => state.profile);
     const { recommendations, myCreatedActivities, myJoinedActivities, loading } = useSelector((state) => state.activity);
 
-    // Countdown timer state
     const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [nextActivity, setNextActivity] = useState(null);
 
@@ -38,7 +37,6 @@ const Dashboard = () => {
         dispatch(fetchMyJoinedActivities());
     }, [dispatch]);
 
-    // Find next upcoming activity and setup countdown
     useEffect(() => {
         const allActivities = [...(myJoinedActivities || []), ...(myCreatedActivities || [])];
         const upcomingActivities = allActivities
@@ -50,7 +48,6 @@ const Dashboard = () => {
         }
     }, [myJoinedActivities, myCreatedActivities]);
 
-    // Countdown timer effect
     useEffect(() => {
         if (!nextActivity) return;
 
@@ -82,10 +79,10 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
-            {/* Hero Banner with Background Image */}
+            {/* Hero Banner - UNIQUE IMAGE */}
             <div className="dashboard-hero">
                 <img
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&q=80"
                     alt="People connecting"
                     className="hero-bg-image"
                 />
@@ -108,11 +105,11 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="container">
-                {/* Quick Match CTA */}
+            <div className="container main-content">
+                {/* Quick Match CTA - UNIQUE IMAGE */}
                 <div className="quick-match-section">
                     <div className="quick-match-image">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Quick Match" />
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=500&q=80" alt="Quick Match" />
                     </div>
                     <div className="quick-match-content">
                         <h2>⚡ Quick Match</h2>
@@ -146,10 +143,10 @@ const Dashboard = () => {
                     </div>
                 </section>
 
-                {/* Community Stats Banner */}
+                {/* Community Stats Banner - UNIQUE IMAGE */}
                 <div className="community-banner">
                     <div className="community-bg">
-                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=80" alt="Community" />
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="Community" />
                     </div>
                     <div className="community-content">
                         <div className="community-stat">
@@ -254,7 +251,7 @@ const Dashboard = () => {
                         </div>
                     ) : recommendations.length === 0 ? (
                         <div className="empty-state">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Get Started" className="empty-image" />
+                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&q=80" alt="Get Started" className="empty-image" />
                             <h3>No Recommendations Yet</h3>
                             <p className="text-muted">Complete your profile to get personalized suggestions</p>
                             <Link to="/profile/create">
@@ -299,9 +296,9 @@ const Dashboard = () => {
                     </section>
                 )}
 
-                {/* Footer CTA */}
+                {/* Footer CTA - UNIQUE IMAGE */}
                 <div className="footer-cta">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Join" className="footer-cta-image" />
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80" alt="Join" className="footer-cta-image" />
                     <div className="footer-cta-content">
                         <h2>Ready to create your own activity?</h2>
                         <p>Bring people together for something amazing</p>
