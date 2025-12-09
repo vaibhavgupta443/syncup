@@ -7,6 +7,16 @@ import ActivityCard from '../components/ActivityCard';
 import Button from '../components/Button';
 import '../styles/Dashboard.css';
 
+// Category showcase images
+const categoryShowcase = [
+    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1461896836934- voices-of-the-stadium?w=300&q=80', color: '#10b981' },
+    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300&q=80', color: '#8b5cf6' },
+    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=300&q=80', color: '#ef4444' },
+    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&q=80', color: '#f59e0b' },
+    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80', color: '#ec4899' },
+    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=300&q=80', color: '#06b6d4' },
+];
+
 /**
  * Main dashboard page with enhanced features.
  */
@@ -62,7 +72,6 @@ const Dashboard = () => {
         return () => clearInterval(timer);
     }, [nextActivity]);
 
-    // Handle Quick Match - navigate to first recommended activity
     const handleQuickMatch = () => {
         if (recommendations.length > 0) {
             navigate(`/activities/${recommendations[0].id}`);
@@ -73,70 +82,120 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
-            <div className="container">
-                {/* Welcome Section */}
-                <div className="dashboard-header fade-in">
-                    <div>
-                        <p className="welcome-label">Welcome back</p>
-                        <h1>{user?.fullName}</h1>
-                        <p className="text-muted">Here's what's happening in your network</p>
+            {/* Hero Banner with Background Image */}
+            <div className="dashboard-hero">
+                <img
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
+                    alt="People connecting"
+                    className="hero-bg-image"
+                />
+                <div className="hero-overlay">
+                    <div className="container">
+                        <div className="hero-content">
+                            <p className="hero-label">Welcome back, {user?.fullName?.split(' ')[0]}! 👋</p>
+                            <h1 className="hero-title">Find Your Next Adventure</h1>
+                            <p className="hero-subtitle">Connect with people who share your passions</p>
+                            <div className="hero-actions">
+                                <Button variant="primary" size="lg" onClick={() => navigate('/activities')}>
+                                    Explore Activities
+                                </Button>
+                                <Button variant="secondary" size="lg" onClick={() => navigate('/activities/create')}>
+                                    Create Activity
+                                </Button>
+                            </div>
+                        </div>
                     </div>
-                    <Button variant="primary" onClick={() => navigate('/activities/create')}>
-                        + New Activity
-                    </Button>
                 </div>
+            </div>
 
-                {/* Quick Match CTA - USP Feature */}
-                <div className="quick-match-section fade-in">
+            <div className="container">
+                {/* Quick Match CTA */}
+                <div className="quick-match-section">
+                    <div className="quick-match-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Quick Match" />
+                    </div>
                     <div className="quick-match-content">
                         <h2>⚡ Quick Match</h2>
-                        <p>Jump into the perfect activity for you with one click!</p>
-                    </div>
-                    <button className="quick-match-btn" onClick={handleQuickMatch}>
-                        Find My Match →
-                    </button>
-                </div>
-
-                {/* Community Stats Banner - USP Feature */}
-                <div className="community-banner fade-in">
-                    <div className="community-stat">
-                        <div className="community-stat-value">5,000+</div>
-                        <div className="community-stat-label">Activities Completed</div>
-                    </div>
-                    <div className="community-stat">
-                        <div className="community-stat-value">12,000+</div>
-                        <div className="community-stat-label">Connections Made</div>
-                    </div>
-                    <div className="community-stat">
-                        <div className="community-stat-value">100+</div>
-                        <div className="community-stat-label">Cities</div>
-                    </div>
-                    <div className="community-stat">
-                        <div className="community-stat-value">50+</div>
-                        <div className="community-stat-label">Activity Types</div>
+                        <p>Let us find the perfect activity for you based on your interests!</p>
+                        <button className="quick-match-btn" onClick={handleQuickMatch}>
+                            Find My Match →
+                        </button>
                     </div>
                 </div>
 
-                {/* Countdown Timer - USP Feature */}
+                {/* Category Showcase */}
+                <section className="category-showcase">
+                    <div className="section-header">
+                        <h2>🎯 Browse by Category</h2>
+                        <p className="text-muted">Find activities that match your interests</p>
+                    </div>
+                    <div className="category-grid">
+                        {categoryShowcase.map((cat) => (
+                            <div
+                                key={cat.name}
+                                className="category-card"
+                                onClick={() => navigate(`/activities?category=${cat.name.toUpperCase()}`)}
+                            >
+                                <img src={cat.image} alt={cat.name} className="category-image" />
+                                <div className="category-overlay" style={{ background: `linear-gradient(135deg, ${cat.color}cc 0%, ${cat.color}99 100%)` }}>
+                                    <span className="category-emoji">{cat.emoji}</span>
+                                    <span className="category-name">{cat.name}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Community Stats Banner */}
+                <div className="community-banner">
+                    <div className="community-bg">
+                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=80" alt="Community" />
+                    </div>
+                    <div className="community-content">
+                        <div className="community-stat">
+                            <div className="community-stat-value">5,000+</div>
+                            <div className="community-stat-label">Activities Completed</div>
+                        </div>
+                        <div className="community-stat">
+                            <div className="community-stat-value">12,000+</div>
+                            <div className="community-stat-label">Connections Made</div>
+                        </div>
+                        <div className="community-stat">
+                            <div className="community-stat-value">100+</div>
+                            <div className="community-stat-label">Cities</div>
+                        </div>
+                        <div className="community-stat">
+                            <div className="community-stat-value">50+</div>
+                            <div className="community-stat-label">Activity Types</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Countdown Timer */}
                 {nextActivity && (
-                    <div className="countdown-section fade-in">
-                        <p className="countdown-title">⏱️ Your next activity: <strong>{nextActivity.name}</strong></p>
-                        <div className="countdown-timer">
-                            <div className="countdown-unit">
-                                <div className="countdown-value">{countdown.days}</div>
-                                <div className="countdown-label">Days</div>
+                    <div className="countdown-section">
+                        <div className="countdown-banner">
+                            <div className="countdown-info">
+                                <p className="countdown-title">⏱️ Your next activity</p>
+                                <h3>{nextActivity.name}</h3>
                             </div>
-                            <div className="countdown-unit">
-                                <div className="countdown-value">{countdown.hours}</div>
-                                <div className="countdown-label">Hours</div>
-                            </div>
-                            <div className="countdown-unit">
-                                <div className="countdown-value">{countdown.minutes}</div>
-                                <div className="countdown-label">Minutes</div>
-                            </div>
-                            <div className="countdown-unit">
-                                <div className="countdown-value">{countdown.seconds}</div>
-                                <div className="countdown-label">Seconds</div>
+                            <div className="countdown-timer">
+                                <div className="countdown-unit">
+                                    <div className="countdown-value">{countdown.days}</div>
+                                    <div className="countdown-label">Days</div>
+                                </div>
+                                <div className="countdown-unit">
+                                    <div className="countdown-value">{countdown.hours}</div>
+                                    <div className="countdown-label">Hours</div>
+                                </div>
+                                <div className="countdown-unit">
+                                    <div className="countdown-value">{countdown.minutes}</div>
+                                    <div className="countdown-label">Mins</div>
+                                </div>
+                                <div className="countdown-unit">
+                                    <div className="countdown-value">{countdown.seconds}</div>
+                                    <div className="countdown-label">Secs</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,34 +203,34 @@ const Dashboard = () => {
 
                 {/* Quick Stats */}
                 {profile && (
-                    <div className="stats-grid fade-in">
+                    <div className="stats-grid">
                         <div className="stat-card">
-                            <div className="stat-header">
-                                <span className="stat-label">⭐ Rating</span>
+                            <div className="stat-icon">⭐</div>
+                            <div className="stat-info">
+                                <div className="stat-value">{profile.averageRating?.toFixed(1) || '0.0'}</div>
+                                <div className="stat-label">Your Rating</div>
                             </div>
-                            <div className="stat-value">{profile.averageRating?.toFixed(1) || '0.0'}</div>
-                            <div className="stat-subtitle">out of 5.0</div>
                         </div>
                         <div className="stat-card">
-                            <div className="stat-header">
-                                <span className="stat-label">🎯 Activities</span>
+                            <div className="stat-icon">🎯</div>
+                            <div className="stat-info">
+                                <div className="stat-value">{profile.totalActivities || 0}</div>
+                                <div className="stat-label">Activities Done</div>
                             </div>
-                            <div className="stat-value">{profile.totalActivities || 0}</div>
-                            <div className="stat-subtitle">completed</div>
                         </div>
                         <div className="stat-card">
-                            <div className="stat-header">
-                                <span className="stat-label">🏆 Experience</span>
+                            <div className="stat-icon">🏆</div>
+                            <div className="stat-info">
+                                <div className="stat-value">{profile.experienceTag || 'Newbie'}</div>
+                                <div className="stat-label">Your Level</div>
                             </div>
-                            <div className="stat-value">{profile.experienceTag || 'Newbie'}</div>
-                            <div className="stat-subtitle">level</div>
                         </div>
                         <div className="stat-card">
-                            <div className="stat-header">
-                                <span className="stat-label">📍 Location</span>
+                            <div className="stat-icon">📍</div>
+                            <div className="stat-info">
+                                <div className="stat-value">{profile.location || '—'}</div>
+                                <div className="stat-label">Location</div>
                             </div>
-                            <div className="stat-value">{profile.location || '—'}</div>
-                            <div className="stat-subtitle">base</div>
                         </div>
                     </div>
                 )}
@@ -184,7 +243,7 @@ const Dashboard = () => {
                             <p className="text-muted">Based on your interests and activity</p>
                         </div>
                         <Link to="/activities">
-                            <Button variant="ghost" size="sm">View All</Button>
+                            <Button variant="ghost" size="sm">View All →</Button>
                         </Link>
                     </div>
 
@@ -194,11 +253,10 @@ const Dashboard = () => {
                             <p className="text-muted">Loading recommendations...</p>
                         </div>
                     ) : recommendations.length === 0 ? (
-                        <div className="empty-state card">
+                        <div className="empty-state">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Get Started" className="empty-image" />
                             <h3>No Recommendations Yet</h3>
-                            <p className="text-muted">
-                                Complete your profile to get personalized activity suggestions
-                            </p>
+                            <p className="text-muted">Complete your profile to get personalized suggestions</p>
                             <Link to="/profile/create">
                                 <Button variant="primary">Complete Profile</Button>
                             </Link>
@@ -225,7 +283,7 @@ const Dashboard = () => {
                                 <p className="text-muted">Activities you've created</p>
                             </div>
                             <Link to="/my-activities">
-                                <Button variant="ghost" size="sm">Manage All</Button>
+                                <Button variant="ghost" size="sm">Manage All →</Button>
                             </Link>
                         </div>
 
@@ -240,6 +298,18 @@ const Dashboard = () => {
                         </div>
                     </section>
                 )}
+
+                {/* Footer CTA */}
+                <div className="footer-cta">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Join" className="footer-cta-image" />
+                    <div className="footer-cta-content">
+                        <h2>Ready to create your own activity?</h2>
+                        <p>Bring people together for something amazing</p>
+                        <Button variant="primary" size="lg" onClick={() => navigate('/activities/create')}>
+                            Create Activity
+                        </Button>
+                    </div>
+                </div>
             </div>
         </div>
     );
