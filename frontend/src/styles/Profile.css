@@ -14,32 +14,25 @@
     margin-bottom: var(--spacing-2xl);
 }
 
-.profile-header h1 {
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
-}
-
 .profile-card {
     background: var(--bg-card);
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius);
     padding: var(--spacing-2xl);
-    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
 }
 
-/* Profile View */
 .profile-avatar-large {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
+    background: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #ffffff;
     margin: 0 auto var(--spacing-xl);
-    box-shadow: var(--shadow-glow);
 }
 
 .profile-name {
@@ -73,7 +66,7 @@
     font-family: var(--font-display);
     font-size: var(--font-size-2xl);
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--text-primary);
     margin-bottom: 4px;
 }
 
@@ -91,7 +84,7 @@
     color: var(--text-primary);
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--accent-light);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .interests-list {
@@ -102,16 +95,12 @@
 
 .interest-tag {
     padding: var(--spacing-xs) var(--spacing-md);
-    background: var(--accent-light);
-    color: var(--primary-dark);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     border-radius: 20px;
     font-size: var(--font-size-sm);
     font-weight: 500;
-}
-
-/* Achievement Badges */
-.badges-section {
-    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
 }
 
 .badges-grid {
@@ -125,12 +114,6 @@
     padding: var(--spacing-md);
     background: var(--bg-secondary);
     border-radius: var(--border-radius);
-    transition: all var(--transition-base);
-}
-
-.badge-item:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
 }
 
 .badge-icon {
@@ -144,12 +127,6 @@
     font-weight: 500;
 }
 
-.badge-locked {
-    opacity: 0.4;
-    filter: grayscale(1);
-}
-
-/* Profile Form */
 .profile-form .form-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

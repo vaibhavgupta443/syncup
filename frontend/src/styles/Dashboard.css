@@ -11,34 +11,32 @@
     margin-bottom: var(--spacing-2xl);
     padding: var(--spacing-xl);
     background: var(--bg-card);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
 }
 
 .welcome-label {
     font-size: var(--font-size-sm);
-    color: var(--accent-color);
-    font-weight: 600;
+    color: var(--text-muted);
+    font-weight: 500;
     margin-bottom: var(--spacing-xs);
 }
 
 .dashboard-header h1 {
     margin-bottom: var(--spacing-xs);
     font-size: var(--font-size-3xl);
-    color: var(--text-primary);
 }
 
-/* Quick Match CTA */
+/* Quick Match CTA - Subtle black design */
 .quick-match-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    border-radius: var(--border-radius-lg);
+    background: var(--primary-color);
+    border-radius: var(--border-radius);
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-2xl);
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #ffffff;
-    box-shadow: var(--shadow-glow);
 }
 
 .quick-match-content h2 {
@@ -47,24 +45,24 @@
 }
 
 .quick-match-content p {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 .quick-match-btn {
     background: #ffffff;
-    color: var(--primary-dark);
-    font-weight: 700;
+    color: var(--primary-color);
+    font-weight: 600;
     padding: var(--spacing-md) var(--spacing-xl);
     border: none;
     border-radius: var(--border-radius-sm);
     cursor: pointer;
     transition: all var(--transition-base);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
 }
 
 .quick-match-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
 /* Stats Grid */
@@ -81,24 +79,10 @@
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
     transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
-}
-
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), var(--primary-light));
 }
 
 .stat-card:hover {
-    border-color: var(--accent-light);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-header {
@@ -113,7 +97,7 @@
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .stat-value {
@@ -126,15 +110,14 @@
 
 .stat-subtitle {
     font-size: var(--font-size-xs);
-    color: var(--accent-color);
-    font-weight: 500;
+    color: var(--text-muted);
 }
 
 /* Community Stats Banner */
 .community-banner {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius);
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-2xl);
     display: grid;
@@ -149,9 +132,9 @@
 
 .community-stat-value {
     font-family: var(--font-display);
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
 }
 
@@ -174,21 +157,20 @@
 
 .section-header h2 {
     margin: 0 0 var(--spacing-xs);
-    color: var(--text-primary);
 }
 
 /* Countdown Timer */
 .countdown-section {
     background: var(--bg-card);
-    border: 2px solid var(--accent-light);
-    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-2xl);
     text-align: center;
 }
 
 .countdown-title {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
 }
@@ -196,7 +178,7 @@
 .countdown-timer {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
 }
 
 .countdown-unit {
@@ -205,9 +187,9 @@
 
 .countdown-value {
     font-family: var(--font-display);
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--text-primary);
 }
 
 .countdown-label {
@@ -241,10 +223,6 @@
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
-    }
-
-    .community-banner {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .countdown-timer {

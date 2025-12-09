@@ -11,27 +11,19 @@
 }
 
 .activity-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
-/* Category Image Header */
-.activity-card-image {
-    height: 140px;
-    width: 100%;
-    object-fit: cover;
-    border-bottom: 1px solid var(--border-color);
-}
-
+/* Category Emoji Header */
 .activity-card-image-placeholder {
-    height: 140px;
+    height: 120px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
-    background: linear-gradient(135deg, var(--accent-light) 0%, rgba(255, 107, 107, 0.1) 100%);
+    font-size: 2.5rem;
+    background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -87,8 +79,8 @@
 
 .meta-label {
     font-size: var(--font-size-xs);
-    color: var(--accent-color);
-    font-weight: 600;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
 .meta-value {
@@ -120,21 +112,21 @@
 }
 
 .creator-avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
+    background: var(--text-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: var(--font-size-sm);
-    font-weight: 700;
+    font-weight: 600;
     color: #ffffff;
 }
 
 .creator-name {
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-primary);
     margin: 0;
 }
@@ -143,21 +135,13 @@
     font-size: var(--font-size-xs);
     color: var(--text-muted);
     margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.creator-rating::before {
-    content: '⭐';
-    font-size: 10px;
 }
 
 .entry-fee {
     font-family: var(--font-display);
     font-size: var(--font-size-lg);
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--text-primary);
     margin: 0;
 }
 
