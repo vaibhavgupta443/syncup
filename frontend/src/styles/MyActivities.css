@@ -1,6 +1,7 @@
-.my-activities-container {
+.my-activities-page {
     min-height: 100vh;
     padding: var(--spacing-2xl) 0;
+    background: var(--bg-secondary);
 }
 
 .my-activities-header {
@@ -8,17 +9,53 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--spacing-2xl);
-    padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-lg);
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
 }
 
-.activities-section {
-    margin-bottom: var(--spacing-2xl);
-}
-
-.activities-section h2 {
-    margin-bottom: var(--spacing-lg);
+.my-activities-header h1 {
     color: var(--text-primary);
+}
+
+.tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+.tab-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    color: var(--accent-color);
+    background: var(--bg-hover);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-color);
 }
 
 @media (max-width: 768px) {
@@ -26,5 +63,9 @@
         flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-md);
+    }
+
+    .tabs {
+        flex-wrap: wrap;
     }
 }

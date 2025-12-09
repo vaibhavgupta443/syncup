@@ -7,7 +7,7 @@ import Button from '../components/Button';
 import '../styles/Auth.css';
 
 /**
- * Registration page component.
+ * Registration page component with hero image.
  */
 const Register = () => {
     const dispatch = useDispatch();
@@ -86,96 +86,116 @@ const Register = () => {
 
     return (
         <div className="auth-container">
-            <div className="auth-card card fade-in">
-                <div className="auth-header">
-                    <div className="auth-logo">
-                        <img src="/logo.jpg" alt="SyncUp" className="logo-image" />
-                        <span className="logo-text">SyncUp</span>
-                    </div>
-                    <h1>Create Account</h1>
-                    <p className="text-muted">Join the community and start connecting</p>
+            {/* Hero Section - visible on desktop */}
+            <div className="auth-hero">
+                <img
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
+                    alt="Team collaboration"
+                    className="auth-hero-image"
+                />
+                <div className="auth-hero-overlay">
+                    <h2>Find Your Tribe</h2>
+                    <p>Whether it's sports, music, study groups, or adventures – find like-minded people near you.</p>
                 </div>
+            </div>
 
-                {error && (
-                    <div className="alert alert-error">
-                        {error}
+            {/* Form Section */}
+            <div className="auth-content">
+                <div className="auth-card card fade-in">
+                    <div className="auth-header">
+                        <div className="auth-logo">
+                            <img src="/logo.jpg" alt="SyncUp" className="logo-image" />
+                            <span className="logo-text">SyncUp</span>
+                        </div>
+                        <h1>Create Account</h1>
+                        <p className="text-muted">Join the community and start connecting</p>
                     </div>
-                )}
 
-                <form onSubmit={handleSubmit} className="auth-form">
-                    <Input
-                        label="Full Name"
-                        name="fullName"
-                        type="text"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        placeholder="Enter your full name"
-                        error={errors.fullName}
-                        required
-                    />
+                    {error && (
+                        <div className="alert alert-error">
+                            {error}
+                        </div>
+                    )}
 
-                    <Input
-                        label="Email Address"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        error={errors.email}
-                        required
-                    />
+                    <form onSubmit={handleSubmit} className="auth-form">
+                        <Input
+                            label="Full Name"
+                            name="fullName"
+                            type="text"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            placeholder="Enter your full name"
+                            error={errors.fullName}
+                            required
+                        />
 
-                    <Input
-                        label="Age"
-                        name="age"
-                        type="number"
-                        value={formData.age}
-                        onChange={handleChange}
-                        placeholder="Enter your age"
-                        error={errors.age}
-                        required
-                    />
+                        <Input
+                            label="Email Address"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Enter your email"
+                            error={errors.email}
+                            required
+                        />
 
-                    <Input
-                        label="Password"
-                        name="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Create a password"
-                        error={errors.password}
-                        required
-                    />
+                        <Input
+                            label="Age"
+                            name="age"
+                            type="number"
+                            value={formData.age}
+                            onChange={handleChange}
+                            placeholder="Enter your age"
+                            error={errors.age}
+                            required
+                        />
 
-                    <Input
-                        label="Confirm Password"
-                        name="confirmPassword"
-                        type="password"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        placeholder="Confirm your password"
-                        error={errors.confirmPassword}
-                        required
-                    />
+                        <Input
+                            label="Password"
+                            name="password"
+                            type="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Create a password"
+                            error={errors.password}
+                            required
+                        />
 
-                    <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        loading={loading}
-                        className="auth-submit-btn"
-                    >
-                        Create Account
-                    </Button>
-                </form>
+                        <Input
+                            label="Confirm Password"
+                            name="confirmPassword"
+                            type="password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            placeholder="Confirm your password"
+                            error={errors.confirmPassword}
+                            required
+                        />
 
-                <div className="auth-footer">
-                    <p className="text-muted">
-                        Already have an account?{' '}
-                        <Link to="/login" className="auth-link">
-                            Sign In
-                        </Link>
-                    </p>
+                        <Button
+                            type="submit"
+                            variant="primary"
+                            size="lg"
+                            loading={loading}
+                            className="auth-submit-btn"
+                        >
+                            Create Account
+                        </Button>
+                    </form>
+
+                    <div className="auth-footer">
+                        <p className="text-muted">
+                            Already have an account?{' '}
+                            <Link to="/login" className="auth-link">
+                                Sign In
+                            </Link>
+                        </p>
+                    </div>
+
+                    <div className="auth-social-proof">
+                        <p>🎯 <strong>50+</strong> activity categories • 🌍 <strong>100+</strong> cities</p>
+                    </div>
                 </div>
             </div>
         </div>

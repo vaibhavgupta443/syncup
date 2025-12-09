@@ -1,42 +1,69 @@
-.create-activity-container {
+.create-activity-page {
     min-height: 100vh;
     padding: var(--spacing-2xl) 0;
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
 }
 
-.create-activity-card {
+.create-activity-container {
     max-width: 700px;
     margin: 0 auto;
-    padding: var(--spacing-2xl);
 }
 
-.form-header {
-    margin-bottom: var(--spacing-xl);
-    padding-bottom: var(--spacing-lg);
-    border-bottom: 1px solid var(--border-color);
+.create-activity-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
 }
 
-.form-header h1 {
+.create-activity-header h1 {
+    color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
 }
 
-.create-activity-form {
-    margin-top: var(--spacing-lg);
+.create-activity-header p {
+    color: var(--text-muted);
+}
+
+.create-activity-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+.form-section {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.form-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-lg);
 }
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
 }
 
 .form-actions {
     display: flex;
-    justify-content: space-between;
     gap: var(--spacing-md);
     margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-lg);
+    padding-top: var(--spacing-xl);
     border-top: 1px solid var(--border-color);
+}
+
+.form-actions .btn {
+    flex: 1;
 }
 
 @media (max-width: 768px) {
@@ -45,10 +72,6 @@
     }
 
     .form-actions {
-        flex-direction: column-reverse;
-    }
-
-    .form-actions button {
-        width: 100%;
+        flex-direction: column;
     }
 }

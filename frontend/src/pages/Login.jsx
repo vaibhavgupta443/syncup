@@ -7,7 +7,7 @@ import Button from '../components/Button';
 import '../styles/Auth.css';
 
 /**
- * Login page component.
+ * Login page component with hero image.
  */
 const Login = () => {
     const dispatch = useDispatch();
@@ -65,63 +65,83 @@ const Login = () => {
 
     return (
         <div className="auth-container">
-            <div className="auth-card card fade-in">
-                <div className="auth-header">
-                    <div className="auth-logo">
-                        <img src="/logo.jpg" alt="SyncUp" className="logo-image" />
-                        <span className="logo-text">SyncUp</span>
-                    </div>
-                    <h1>Welcome Back</h1>
-                    <p className="text-muted">Sign in to continue to your dashboard</p>
+            {/* Hero Section - visible on desktop */}
+            <div className="auth-hero">
+                <img
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80"
+                    alt="Friends having fun together"
+                    className="auth-hero-image"
+                />
+                <div className="auth-hero-overlay">
+                    <h2>Connect. Play. Grow.</h2>
+                    <p>Join thousands of people finding activity partners and making new friends in their city.</p>
                 </div>
+            </div>
 
-                {error && (
-                    <div className="alert alert-error">
-                        {error}
+            {/* Form Section */}
+            <div className="auth-content">
+                <div className="auth-card card fade-in">
+                    <div className="auth-header">
+                        <div className="auth-logo">
+                            <img src="/logo.jpg" alt="SyncUp" className="logo-image" />
+                            <span className="logo-text">SyncUp</span>
+                        </div>
+                        <h1>Welcome Back</h1>
+                        <p className="text-muted">Sign in to continue to your dashboard</p>
                     </div>
-                )}
 
-                <form onSubmit={handleSubmit} className="auth-form">
-                    <Input
-                        label="Email Address"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        error={errors.email}
-                        required
-                    />
+                    {error && (
+                        <div className="alert alert-error">
+                            {error}
+                        </div>
+                    )}
 
-                    <Input
-                        label="Password"
-                        name="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Enter your password"
-                        error={errors.password}
-                        required
-                    />
+                    <form onSubmit={handleSubmit} className="auth-form">
+                        <Input
+                            label="Email Address"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Enter your email"
+                            error={errors.email}
+                            required
+                        />
 
-                    <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        loading={loading}
-                        className="auth-submit-btn"
-                    >
-                        Sign In
-                    </Button>
-                </form>
+                        <Input
+                            label="Password"
+                            name="password"
+                            type="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Enter your password"
+                            error={errors.password}
+                            required
+                        />
 
-                <div className="auth-footer">
-                    <p className="text-muted">
-                        Don't have an account?{' '}
-                        <Link to="/register" className="auth-link">
-                            Create Account
-                        </Link>
-                    </p>
+                        <Button
+                            type="submit"
+                            variant="primary"
+                            size="lg"
+                            loading={loading}
+                            className="auth-submit-btn"
+                        >
+                            Sign In
+                        </Button>
+                    </form>
+
+                    <div className="auth-footer">
+                        <p className="text-muted">
+                            Don't have an account?{' '}
+                            <Link to="/register" className="auth-link">
+                                Create Account
+                            </Link>
+                        </p>
+                    </div>
+
+                    <div className="auth-social-proof">
+                        <p><strong>5,000+</strong> activities completed • <strong>12,000+</strong> connections made</p>
+                    </div>
                 </div>
             </div>
         </div>

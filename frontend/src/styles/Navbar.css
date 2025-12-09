@@ -6,6 +6,7 @@
     top: 0;
     z-index: 100;
     backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar-container {
@@ -25,23 +26,21 @@
 }
 
 .brand-logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     object-fit: cover;
 }
 
 .brand-text {
     font-family: var(--font-brand);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8e4e0 50%, #7dd3d8 100%);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-transform: uppercase;
 }
 
 .navbar-menu {
@@ -51,34 +50,43 @@
 }
 
 .nav-link {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
     font-size: var(--font-size-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     transition: color var(--transition-fast);
     position: relative;
-    padding: var(--spacing-xs) 0;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 2px;
     background: var(--accent-color);
     transition: width var(--transition-base);
+    border-radius: 2px;
 }
 
 .nav-link:hover {
-    color: var(--text-primary);
+    color: var(--accent-color);
 }
 
 .nav-link:hover::after {
-    width: 100%;
+    width: 80%;
+}
+
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+.nav-link.active::after {
+    width: 80%;
 }
 
 @media (max-width: 768px) {
@@ -88,9 +96,10 @@
 
     .nav-link {
         font-size: var(--font-size-xs);
+        padding: var(--spacing-xs);
     }
 
     .brand-text {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }

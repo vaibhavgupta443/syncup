@@ -1,6 +1,50 @@
 .auth-container {
     min-height: 100vh;
     display: flex;
+    background: var(--bg-secondary);
+}
+
+.auth-hero {
+    flex: 1;
+    display: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.auth-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(229, 57, 53, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-2xl);
+    color: #ffffff;
+    text-align: center;
+}
+
+.auth-hero-overlay h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: var(--spacing-md);
+}
+
+.auth-hero-overlay p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+    max-width: 400px;
+}
+
+.auth-content {
+    flex: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: var(--spacing-xl);
@@ -11,6 +55,7 @@
     max-width: 440px;
     width: 100%;
     padding: var(--spacing-2xl);
+    background: var(--bg-primary);
 }
 
 .auth-header {
@@ -27,27 +72,28 @@
 }
 
 .logo-image {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
     object-fit: cover;
+    box-shadow: var(--shadow-md);
 }
 
 .logo-text {
     font-family: var(--font-brand);
     font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, #ffffff 0%, #b8e4e0 50%, #7dd3d8 100%);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-transform: uppercase;
 }
 
 .auth-header h1 {
     margin-bottom: var(--spacing-sm);
     font-size: var(--font-size-2xl);
+    color: var(--text-primary);
 }
 
 .auth-form {
@@ -57,6 +103,8 @@
 .auth-submit-btn {
     width: 100%;
     margin-top: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
 }
 
 .auth-footer {
@@ -73,11 +121,36 @@
 }
 
 .auth-link:hover {
-    color: var(--accent-light);
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Social proof on auth pages */
+.auth-social-proof {
+    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-lg);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.auth-social-proof p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.auth-social-proof strong {
+    color: var(--accent-color);
+}
+
+@media (min-width: 1024px) {
+    .auth-hero {
+        display: flex;
+    }
 }
 
 @media (max-width: 768px) {
-    .auth-container {
+    .auth-content {
         padding: var(--spacing-md);
     }
 
