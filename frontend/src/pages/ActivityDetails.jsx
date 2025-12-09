@@ -85,17 +85,7 @@ const ActivityDetails = () => {
             const response = await participationAPI.getMyParticipation(id);
             if (response.data) {
                 const status = response.data.status;
-                if (status === 'NOT_JOINED') {
-                    setParticipationStatus('NOT_JOINED');
-                } else if (status === 'PENDING') {
-                    setParticipationStatus('PENDING');
-                } else if (status === 'APPROVED') {
-                    setParticipationStatus('APPROVED');
-                } else if (status === 'REJECTED') {
-                    setParticipationStatus('REJECTED');
-                } else {
-                    setParticipationStatus('NOT_JOINED');
-                }
+                setParticipationStatus(status || 'NOT_JOINED');
             } else {
                 setParticipationStatus('NOT_JOINED');
             }
@@ -116,7 +106,7 @@ const ActivityDetails = () => {
         try {
             await participationAPI.requestToJoin(id);
             setParticipationStatus('PENDING');
-            alert('Join request sent successfully! Waiting for organizer approval.');
+            alert('Join request sent successfully!');
         } catch (error) {
             alert(error.response?.data?.message || 'Failed to send join request');
         } finally {
@@ -132,7 +122,7 @@ const ActivityDetails = () => {
             await loadParticipants();
             alert('Request approved!');
         } catch (error) {
-            alert(error.response?.data?.message || 'Failed to approve request');
+            alert(error.response?.data?.message || 'Failed to approve');
         } finally {
             setActionLoading(false);
         }
@@ -145,7 +135,7 @@ const ActivityDetails = () => {
             await loadPendingRequests();
             alert('Request rejected');
         } catch (error) {
-            alert(error.response?.data?.message || 'Failed to reject request');
+            alert(error.response?.data?.message || 'Failed to reject');
         } finally {
             setActionLoading(false);
         }
@@ -160,24 +150,6 @@ const ActivityDetails = () => {
     const canJoin = !isCreator && notJoined && currentActivity?.status === 'OPEN';
     const canShowChat = isApproved || isCreator;
 
-    if (loading) {
-        return (
-            <div className="activity-details-loading">
-                <div className="spinner"></div>
-                <p>Loading activity...</p>
-            </div>
-        );
-    }
-
-    if (!currentActivity) {
-        return (
-            <div className="activity-details-error">
-                <h2>Activity not found</h2>
-                <Button onClick={() => navigate('/activities')}>Back to Activities</Button>
-            </div>
-        );
-    }
-
     const formatDate = (dateTime) => {
         return new Date(dateTime).toLocaleDateString('en-US', {
             weekday: 'long',
@@ -189,173 +161,172 @@ const ActivityDetails = () => {
         });
     };
 
+    if (loading) {
+        return (
+            <div className="loading-container">
+                <div className="spinner"></div>
+                <p>Loading activity...</p>
+            </div>
+        );
+    }
+
+    if (!currentActivity) {
+        return (
+            <div className="error-container">
+                <h2>Activity not found</h2>
+                <Button onClick={() => navigate('/activities')}>Back to Activities</Button>
+            </div>
+        );
+    }
+
     return (
-        <div className="activity-details-page">
-            {/* Hero Image Section */}
-            <div className="activity-hero">
+        <div className="activity-page">
+            {/* Hero Banner with Image */}
+            <div className="hero-banner">
                 <img
                     src={getCategoryImage(currentActivity.category)}
-                    alt={currentActivity.category}
-                    className="activity-hero-image"
+                    alt={currentActivity.name}
+                    className="hero-image"
                 />
-                <div className="activity-hero-overlay">
+                <div className="hero-overlay">
                     <div className="container">
-                        <Button variant="ghost" onClick={() => navigate('/activities')} className="back-btn-hero">
+                        <button className="back-link" onClick={() => navigate('/activities')}>
                             ← Back to Activities
-                        </Button>
-                        <div className="hero-badges">
-                            <span className={`badge badge-${currentActivity.status.toLowerCase()}`}>
-                                {currentActivity.status}
-                            </span>
-                            <span className="badge badge-primary">{currentActivity.category}</span>
-                            {isCreator && <span className="badge badge-info">Your Activity</span>}
-                        </div>
-                        <h1 className="hero-title">{currentActivity.name}</h1>
-                        <div className="hero-meta">
-                            <span>📍 {currentActivity.location}</span>
-                            <span>📅 {formatDate(currentActivity.dateTime)}</span>
-                            <span>👥 {currentActivity.currentParticipants}/{currentActivity.maxParticipants || '∞'} joined</span>
+                        </button>
+                        <div className="hero-content">
+                            <div className="hero-badges">
+                                <span className={`status-badge ${currentActivity.status.toLowerCase()}`}>
+                                    {currentActivity.status}
+                                </span>
+                                <span className="category-badge">{currentActivity.category}</span>
+                                {isCreator && <span className="owner-badge">Your Activity</span>}
+                            </div>
+                            <h1>{currentActivity.name}</h1>
+                            <div className="hero-info">
+                                <span>📍 {currentActivity.location}</span>
+                                <span>📅 {formatDate(currentActivity.dateTime)}</span>
+                                <span>👥 {currentActivity.currentParticipants}/{currentActivity.maxParticipants || '∞'}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* Main Content */}
             <div className="container">
-                <div className="activity-details-content">
-                    {/* Main Content */}
-                    <div className="activity-main">
-                        {/* Description Card */}
-                        <div className="content-card">
-                            <h3>About This Activity</h3>
-                            <p className="activity-description">
-                                {currentActivity.description || 'No description provided'}
-                            </p>
+                <div className="content-wrapper">
+                    {/* Left Column - Main Info */}
+                    <div className="main-column">
+                        {/* About Section */}
+                        <div className="info-card">
+                            <h2>About This Activity</h2>
+                            <p>{currentActivity.description || 'No description provided'}</p>
                         </div>
 
-                        {/* Details Grid */}
-                        <div className="content-card">
-                            <h3>Details</h3>
-                            <div className="details-grid">
-                                <div className="detail-item">
-                                    <div className="detail-icon">📍</div>
+                        {/* Details Section */}
+                        <div className="info-card">
+                            <h2>Details</h2>
+                            <div className="details-list">
+                                <div className="detail-row">
+                                    <span className="detail-icon">📍</span>
                                     <div>
-                                        <span className="detail-label">Location</span>
-                                        <span className="detail-value">{currentActivity.location}</span>
+                                        <strong>Location</strong>
+                                        <span>{currentActivity.location}</span>
                                     </div>
                                 </div>
-                                <div className="detail-item">
-                                    <div className="detail-icon">📅</div>
+                                <div className="detail-row">
+                                    <span className="detail-icon">📅</span>
                                     <div>
-                                        <span className="detail-label">Date & Time</span>
-                                        <span className="detail-value">{formatDate(currentActivity.dateTime)}</span>
+                                        <strong>Date & Time</strong>
+                                        <span>{formatDate(currentActivity.dateTime)}</span>
+                                    </div>
+                                </div>
+                                <div className="detail-row">
+                                    <span className="detail-icon">👥</span>
+                                    <div>
+                                        <strong>Participants</strong>
+                                        <span>{currentActivity.currentParticipants} / {currentActivity.maxParticipants || '∞'}</span>
                                     </div>
                                 </div>
                                 {currentActivity.requiredSkillLevel && (
-                                    <div className="detail-item">
-                                        <div className="detail-icon">🎯</div>
+                                    <div className="detail-row">
+                                        <span className="detail-icon">🎯</span>
                                         <div>
-                                            <span className="detail-label">Skill Level</span>
-                                            <span className="detail-value">{currentActivity.requiredSkillLevel}</span>
+                                            <strong>Skill Level</strong>
+                                            <span>{currentActivity.requiredSkillLevel}</span>
                                         </div>
                                     </div>
                                 )}
-                                <div className="detail-item">
-                                    <div className="detail-icon">💰</div>
+                                <div className="detail-row">
+                                    <span className="detail-icon">💰</span>
                                     <div>
-                                        <span className="detail-label">Entry Fee</span>
-                                        <span className="detail-value">
-                                            {currentActivity.entryFee > 0 ? `₹${currentActivity.entryFee}` : 'FREE'}
-                                        </span>
+                                        <strong>Entry Fee</strong>
+                                        <span>{currentActivity.entryFee > 0 ? `₹${currentActivity.entryFee}` : 'FREE'}</span>
                                     </div>
                                 </div>
                                 {(currentActivity.minAge || currentActivity.maxAge) && (
-                                    <div className="detail-item">
-                                        <div className="detail-icon">🎂</div>
+                                    <div className="detail-row">
+                                        <span className="detail-icon">🎂</span>
                                         <div>
-                                            <span className="detail-label">Age Range</span>
-                                            <span className="detail-value">
-                                                {currentActivity.minAge || 0} - {currentActivity.maxAge || '∞'} years
-                                            </span>
+                                            <strong>Age Range</strong>
+                                            <span>{currentActivity.minAge || 0} - {currentActivity.maxAge || '∞'} years</span>
                                         </div>
                                     </div>
                                 )}
                             </div>
                         </div>
 
-                        {/* Organizer Card */}
-                        <div className="content-card organizer-card">
-                            <h3>Organized By</h3>
-                            <div className="organizer-info">
-                                <div className="organizer-avatar">
-                                    {currentActivity.creatorName?.charAt(0)}
-                                </div>
-                                <div className="organizer-details">
-                                    <span className="organizer-name">{currentActivity.creatorName}</span>
+                        {/* Organizer Section */}
+                        <div className="info-card">
+                            <h2>Organized By</h2>
+                            <div className="organizer-row">
+                                <div className="avatar-circle">{currentActivity.creatorName?.charAt(0)}</div>
+                                <div>
+                                    <strong>{currentActivity.creatorName}</strong>
                                     {currentActivity.creatorRating > 0 && (
-                                        <span className="organizer-rating">⭐ {currentActivity.creatorRating.toFixed(1)} rating</span>
+                                        <span className="rating">⭐ {currentActivity.creatorRating.toFixed(1)}</span>
                                     )}
                                 </div>
                             </div>
                         </div>
 
-                        {/* Participants */}
+                        {/* Participants Section */}
                         {participants.length > 0 && (
-                            <div className="content-card">
-                                <h3>Participants ({participants.length})</h3>
-                                <div className="participants-grid">
-                                    {participants.map((participant) => (
-                                        <div key={participant.id} className="participant-chip">
-                                            <div className="participant-avatar">
-                                                {participant.userName?.charAt(0)}
-                                            </div>
-                                            <span>{participant.userName}</span>
-                                            {currentActivity.status === 'COMPLETED' && isApproved && (
-                                                <button
-                                                    className="feedback-btn"
-                                                    onClick={() => setShowFeedback(participant)}
-                                                >
-                                                    Rate
-                                                </button>
-                                            )}
+                            <div className="info-card">
+                                <h2>Participants ({participants.length})</h2>
+                                <div className="participants-list">
+                                    {participants.map((p) => (
+                                        <div key={p.id} className="participant-row">
+                                            <div className="avatar-small">{p.userName?.charAt(0)}</div>
+                                            <span>{p.userName}</span>
+                                            {p.userRating > 0 && <span className="rating-small">⭐ {p.userRating.toFixed(1)}</span>}
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         )}
 
-                        {/* Pending Requests (Creator Only) */}
+                        {/* Pending Requests - Creator Only */}
                         {isCreator && pendingRequests.length > 0 && (
-                            <div className="content-card requests-card">
-                                <h3>Pending Requests ({pendingRequests.length})</h3>
+                            <div className="info-card pending-card">
+                                <h2>🔔 Pending Requests ({pendingRequests.length})</h2>
                                 <div className="requests-list">
-                                    {pendingRequests.map((request) => (
-                                        <div key={request.id} className="request-item">
-                                            <div className="request-user">
-                                                <div className="request-avatar">{request.userName?.charAt(0)}</div>
+                                    {pendingRequests.map((req) => (
+                                        <div key={req.id} className="request-row">
+                                            <div className="request-info">
+                                                <div className="avatar-small">{req.userName?.charAt(0)}</div>
                                                 <div>
-                                                    <span className="request-name">{request.userName}</span>
-                                                    {request.userRating > 0 && (
-                                                        <span className="request-rating">⭐ {request.userRating.toFixed(1)}</span>
-                                                    )}
+                                                    <strong>{req.userName}</strong>
+                                                    {req.userRating > 0 && <span className="rating-small">⭐ {req.userRating.toFixed(1)}</span>}
                                                 </div>
                                             </div>
-                                            <div className="request-actions">
-                                                <Button
-                                                    variant="primary"
-                                                    size="sm"
-                                                    onClick={() => handleApprove(request.id)}
-                                                    disabled={actionLoading}
-                                                >
-                                                    Approve
-                                                </Button>
-                                                <Button
-                                                    variant="outline"
-                                                    size="sm"
-                                                    onClick={() => handleReject(request.id)}
-                                                    disabled={actionLoading}
-                                                >
-                                                    Reject
-                                                </Button>
+                                            <div className="request-buttons">
+                                                <button className="approve-btn" onClick={() => handleApprove(req.id)} disabled={actionLoading}>
+                                                    ✓ Approve
+                                                </button>
+                                                <button className="reject-btn" onClick={() => handleReject(req.id)} disabled={actionLoading}>
+                                                    ✗ Reject
+                                                </button>
                                             </div>
                                         </div>
                                     ))}
@@ -365,68 +336,69 @@ const ActivityDetails = () => {
 
                         {/* Chat Section */}
                         {canShowChat && (
-                            <div className="content-card chat-card">
-                                <h3>💬 Activity Chat</h3>
+                            <div className="info-card chat-section">
+                                <h2>💬 Activity Chat</h2>
                                 <ChatBox activityId={id} />
                             </div>
                         )}
                     </div>
 
-                    {/* Sidebar */}
-                    <div className="activity-sidebar">
+                    {/* Right Column - Sidebar */}
+                    <div className="sidebar-column">
                         <div className="sidebar-card">
-                            <div className="price-display">
+                            {/* Price */}
+                            <div className="price-box">
                                 {currentActivity.entryFee > 0 ? (
                                     <>
                                         <span className="price-label">Entry Fee</span>
-                                        <span className="price-amount">₹{currentActivity.entryFee}</span>
+                                        <span className="price-value">₹{currentActivity.entryFee}</span>
                                     </>
                                 ) : (
                                     <span className="price-free">FREE</span>
                                 )}
                             </div>
 
-                            <div className="spots-display">
-                                <span className="spots-count">{currentActivity.maxParticipants - currentActivity.currentParticipants}</span>
-                                <span className="spots-label">spots left</span>
+                            {/* Spots */}
+                            <div className="spots-box">
+                                <span className="spots-number">
+                                    {currentActivity.maxParticipants ?
+                                        currentActivity.maxParticipants - currentActivity.currentParticipants : '∞'}
+                                </span>
+                                <span className="spots-text">spots left</span>
                             </div>
 
-                            {/* Action Buttons */}
-                            {isLoading ? (
-                                <div className="spinner spinner-sm"></div>
-                            ) : canJoin ? (
-                                <Button
-                                    variant="primary"
-                                    size="lg"
-                                    onClick={handleJoinRequest}
-                                    loading={actionLoading}
-                                    className="join-btn-full"
-                                >
-                                    Request to Join
-                                </Button>
-                            ) : isPending ? (
-                                <div className="status-message pending">
-                                    <span className="status-icon">⏳</span>
-                                    <span>Request Pending</span>
-                                    <small>Waiting for organizer</small>
-                                </div>
-                            ) : isApproved ? (
-                                <div className="status-message approved">
-                                    <span className="status-icon">✅</span>
-                                    <span>You're In!</span>
-                                    <small>See you there</small>
-                                </div>
-                            ) : isRejected ? (
-                                <div className="status-message rejected">
-                                    <span className="status-icon">❌</span>
-                                    <span>Request Declined</span>
-                                </div>
-                            ) : currentActivity.status !== 'OPEN' ? (
-                                <div className="status-message closed">
-                                    <span className="status-icon">🚫</span>
-                                    <span>Activity Closed</span>
-                                </div>
-                            ) : null}
+                            {/* Action Button */}
+                            <div className="action-box">
+                                {isLoading ? (
+                                    <div className="spinner spinner-sm"></div>
+                                ) : canJoin ? (
+                                    <button
+                                        className="join-button"
+                                        onClick={handleJoinRequest}
+                                        disabled={actionLoading}
+                                    >
+                                        {actionLoading ? 'Sending...' : 'Request to Join'}
+                                    </button>
+                                ) : isPending ? (
+                                    <div className="status-box pending">
+                                        <span>⏳ Request Pending</span>
+                                        <small>Waiting for approval</small>
+                                    </div>
+                                ) : isApproved ? (
+                                    <div className="status-box approved">
+                                        <span>✅ You're In!</span>
+                                        <small>See you there</small>
+                                    </div>
+                                ) : isRejected ? (
+                                    <div className="status-box rejected">
+                                        <span>❌ Request Declined</span>
+                                    </div>
+                                ) : currentActivity.status !== 'OPEN' ? (
+                                    <div className="status-box closed">
+                                        <span>🚫 Activity Closed</span>
+                                    </div>
+                                ) : null}
+                            </div>
                         </div>
                     </div>
                 </div>
