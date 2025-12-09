@@ -1,0 +1,30 @@
+.my-activities-container {
+    min-height: 100vh;
+    padding: var(--spacing-2xl) 0;
+}
+
+.my-activities-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activities-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.activities-section h2 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .my-activities-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+}
