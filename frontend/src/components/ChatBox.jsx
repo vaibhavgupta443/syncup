@@ -17,7 +17,8 @@ const ChatBox = ({ activityId }) => {
 
     // Get current user from Redux store
     const { user } = useSelector((state) => state.auth);
-    const currentUserId = user?.userId;
+    // Support both userId and id fields for compatibility
+    const currentUserId = user?.userId || user?.id;
 
     useEffect(() => {
         loadMessages();
