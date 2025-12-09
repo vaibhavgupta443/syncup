@@ -7,19 +7,16 @@ import ActivityCard from '../components/ActivityCard';
 import Button from '../components/Button';
 import '../styles/Dashboard.css';
 
-// Category showcase with UNIQUE images
+// Category showcase with vibrant images
 const categoryShowcase = [
-    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80', color: '#10b981' },
-    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80', color: '#8b5cf6' },
-    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80', color: '#ef4444' },
-    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80', color: '#f59e0b' },
-    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', color: '#ec4899' },
-    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80', color: '#06b6d4' },
+    { name: 'Sports', emoji: '⚽', image: 'https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=400&q=80', color: '#10b981' },
+    { name: 'Music', emoji: '🎵', image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&q=80', color: '#8b5cf6' },
+    { name: 'Gaming', emoji: '🎮', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80', color: '#ef4444' },
+    { name: 'Fitness', emoji: '💪', image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80', color: '#f59e0b' },
+    { name: 'Food', emoji: '🍕', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80', color: '#ec4899' },
+    { name: 'Travel', emoji: '✈️', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80', color: '#06b6d4' },
 ];
 
-/**
- * Main dashboard page with enhanced features.
- */
 const Dashboard = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -79,26 +76,53 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
-            {/* Hero Banner - UNIQUE IMAGE */}
+            {/* Premium Hero with Gradient Overlay */}
             <div className="dashboard-hero">
-                <img
-                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&q=80"
-                    alt="People connecting"
-                    className="hero-bg-image"
-                />
-                <div className="hero-overlay">
+                <div className="hero-bg">
+                    <img
+                        src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1800&q=80"
+                        alt="Celebration"
+                        className="hero-bg-image"
+                    />
+                    <div className="hero-gradient"></div>
+                    <div className="hero-particles"></div>
+                </div>
+                <div className="hero-content-wrapper">
                     <div className="container">
                         <div className="hero-content">
-                            <p className="hero-label">Welcome back, {user?.fullName?.split(' ')[0]}! 👋</p>
-                            <h1 className="hero-title">Find Your Next Adventure</h1>
-                            <p className="hero-subtitle">Connect with people who share your passions</p>
+                            <div className="hero-badge">🎉 Welcome back, {user?.fullName?.split(' ')[0]}!</div>
+                            <h1 className="hero-title">
+                                Find Your Next <span className="gradient-text">Adventure</span>
+                            </h1>
+                            <p className="hero-subtitle">Connect with amazing people who share your passions. Join activities, make memories.</p>
                             <div className="hero-actions">
-                                <Button variant="primary" size="lg" onClick={() => navigate('/activities')}>
-                                    Explore Activities
-                                </Button>
-                                <Button variant="secondary" size="lg" onClick={() => navigate('/activities/create')}>
+                                <button className="btn-hero-primary" onClick={() => navigate('/activities')}>
+                                    <span>Explore Activities</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                                <button className="btn-hero-secondary" onClick={() => navigate('/activities/create')}>
                                     Create Activity
-                                </Button>
+                                </button>
+                            </div>
+
+                            {/* Floating Stats */}
+                            <div className="hero-stats">
+                                <div className="hero-stat">
+                                    <span className="stat-number">10K+</span>
+                                    <span className="stat-text">Active Users</span>
+                                </div>
+                                <div className="stat-divider"></div>
+                                <div className="hero-stat">
+                                    <span className="stat-number">5K+</span>
+                                    <span className="stat-text">Activities</span>
+                                </div>
+                                <div className="stat-divider"></div>
+                                <div className="hero-stat">
+                                    <span className="stat-number">100+</span>
+                                    <span className="stat-text">Cities</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,127 +130,133 @@ const Dashboard = () => {
             </div>
 
             <div className="container main-content">
-                {/* Quick Match CTA - UNIQUE IMAGE */}
-                <div className="quick-match-section">
-                    <div className="quick-match-image">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=500&q=80" alt="Quick Match" />
-                    </div>
-                    <div className="quick-match-content">
-                        <h2>⚡ Quick Match</h2>
-                        <p>Let us find the perfect activity for you based on your interests!</p>
+                {/* Quick Match - Glassmorphism Card */}
+                <div className="quick-match-card">
+                    <div className="quick-match-glow"></div>
+                    <div className="quick-match-inner">
+                        <div className="quick-match-icon">⚡</div>
+                        <div className="quick-match-text">
+                            <h3>Quick Match</h3>
+                            <p>Let AI find your perfect activity match!</p>
+                        </div>
                         <button className="quick-match-btn" onClick={handleQuickMatch}>
-                            Find My Match →
+                            Find Match
+                            <span className="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 {/* Category Showcase */}
-                <section className="category-showcase">
+                <section className="category-section">
                     <div className="section-header">
-                        <h2>🎯 Browse by Category</h2>
-                        <p className="text-muted">Find activities that match your interests</p>
+                        <h2>🎯 Explore Categories</h2>
+                        <p className="text-muted">Find your passion</p>
                     </div>
                     <div className="category-grid">
-                        {categoryShowcase.map((cat) => (
+                        {categoryShowcase.map((cat, index) => (
                             <div
                                 key={cat.name}
                                 className="category-card"
                                 onClick={() => navigate(`/activities?category=${cat.name.toUpperCase()}`)}
+                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 <img src={cat.image} alt={cat.name} className="category-image" />
-                                <div className="category-overlay" style={{ background: `linear-gradient(135deg, ${cat.color}cc 0%, ${cat.color}99 100%)` }}>
+                                <div className="category-overlay">
                                     <span className="category-emoji">{cat.emoji}</span>
                                     <span className="category-name">{cat.name}</span>
                                 </div>
+                                <div className="category-shine"></div>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Community Stats Banner - UNIQUE IMAGE */}
-                <div className="community-banner">
-                    <div className="community-bg">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="Community" />
-                    </div>
-                    <div className="community-content">
-                        <div className="community-stat">
-                            <div className="community-stat-value">5,000+</div>
-                            <div className="community-stat-label">Activities Completed</div>
+                {/* Stats Banner - Gradient */}
+                <div className="stats-banner">
+                    <div className="stats-banner-content">
+                        <div className="banner-stat">
+                            <div className="banner-stat-icon">🎯</div>
+                            <div className="banner-stat-value">5,000+</div>
+                            <div className="banner-stat-label">Activities Done</div>
                         </div>
-                        <div className="community-stat">
-                            <div className="community-stat-value">12,000+</div>
-                            <div className="community-stat-label">Connections Made</div>
+                        <div className="banner-stat">
+                            <div className="banner-stat-icon">🤝</div>
+                            <div className="banner-stat-value">12,000+</div>
+                            <div className="banner-stat-label">Connections</div>
                         </div>
-                        <div className="community-stat">
-                            <div className="community-stat-value">100+</div>
-                            <div className="community-stat-label">Cities</div>
+                        <div className="banner-stat">
+                            <div className="banner-stat-icon">🌍</div>
+                            <div className="banner-stat-value">100+</div>
+                            <div className="banner-stat-label">Cities</div>
                         </div>
-                        <div className="community-stat">
-                            <div className="community-stat-value">50+</div>
-                            <div className="community-stat-label">Activity Types</div>
+                        <div className="banner-stat">
+                            <div className="banner-stat-icon">⭐</div>
+                            <div className="banner-stat-value">4.9</div>
+                            <div className="banner-stat-label">Avg Rating</div>
                         </div>
                     </div>
                 </div>
 
                 {/* Countdown Timer */}
                 {nextActivity && (
-                    <div className="countdown-section">
-                        <div className="countdown-banner">
-                            <div className="countdown-info">
-                                <p className="countdown-title">⏱️ Your next activity</p>
-                                <h3>{nextActivity.name}</h3>
+                    <div className="countdown-card">
+                        <div className="countdown-left">
+                            <span className="countdown-badge">⏰ Coming Up</span>
+                            <h3>{nextActivity.name}</h3>
+                        </div>
+                        <div className="countdown-timer">
+                            <div className="time-block">
+                                <span className="time-value">{countdown.days}</span>
+                                <span className="time-label">Days</span>
                             </div>
-                            <div className="countdown-timer">
-                                <div className="countdown-unit">
-                                    <div className="countdown-value">{countdown.days}</div>
-                                    <div className="countdown-label">Days</div>
-                                </div>
-                                <div className="countdown-unit">
-                                    <div className="countdown-value">{countdown.hours}</div>
-                                    <div className="countdown-label">Hours</div>
-                                </div>
-                                <div className="countdown-unit">
-                                    <div className="countdown-value">{countdown.minutes}</div>
-                                    <div className="countdown-label">Mins</div>
-                                </div>
-                                <div className="countdown-unit">
-                                    <div className="countdown-value">{countdown.seconds}</div>
-                                    <div className="countdown-label">Secs</div>
-                                </div>
+                            <span className="time-sep">:</span>
+                            <div className="time-block">
+                                <span className="time-value">{countdown.hours}</span>
+                                <span className="time-label">Hrs</span>
+                            </div>
+                            <span className="time-sep">:</span>
+                            <div className="time-block">
+                                <span className="time-value">{countdown.minutes}</span>
+                                <span className="time-label">Min</span>
+                            </div>
+                            <span className="time-sep">:</span>
+                            <div className="time-block">
+                                <span className="time-value">{countdown.seconds}</span>
+                                <span className="time-label">Sec</span>
                             </div>
                         </div>
                     </div>
                 )}
 
-                {/* Quick Stats */}
+                {/* User Stats */}
                 {profile && (
-                    <div className="stats-grid">
-                        <div className="stat-card">
-                            <div className="stat-icon">⭐</div>
-                            <div className="stat-info">
-                                <div className="stat-value">{profile.averageRating?.toFixed(1) || '0.0'}</div>
-                                <div className="stat-label">Your Rating</div>
+                    <div className="user-stats-grid">
+                        <div className="user-stat-card gradient-1">
+                            <div className="stat-icon-wrapper">⭐</div>
+                            <div className="stat-content">
+                                <span className="stat-value">{profile.averageRating?.toFixed(1) || '0.0'}</span>
+                                <span className="stat-label">Your Rating</span>
                             </div>
                         </div>
-                        <div className="stat-card">
-                            <div className="stat-icon">🎯</div>
-                            <div className="stat-info">
-                                <div className="stat-value">{profile.totalActivities || 0}</div>
-                                <div className="stat-label">Activities Done</div>
+                        <div className="user-stat-card gradient-2">
+                            <div className="stat-icon-wrapper">🎯</div>
+                            <div className="stat-content">
+                                <span className="stat-value">{profile.totalActivities || 0}</span>
+                                <span className="stat-label">Activities</span>
                             </div>
                         </div>
-                        <div className="stat-card">
-                            <div className="stat-icon">🏆</div>
-                            <div className="stat-info">
-                                <div className="stat-value">{profile.experienceTag || 'Newbie'}</div>
-                                <div className="stat-label">Your Level</div>
+                        <div className="user-stat-card gradient-3">
+                            <div className="stat-icon-wrapper">🏆</div>
+                            <div className="stat-content">
+                                <span className="stat-value">{profile.experienceTag || 'Newbie'}</span>
+                                <span className="stat-label">Level</span>
                             </div>
                         </div>
-                        <div className="stat-card">
-                            <div className="stat-icon">📍</div>
-                            <div className="stat-info">
-                                <div className="stat-value">{profile.location || '—'}</div>
-                                <div className="stat-label">Location</div>
+                        <div className="user-stat-card gradient-4">
+                            <div className="stat-icon-wrapper">📍</div>
+                            <div className="stat-content">
+                                <span className="stat-value">{profile.location || '—'}</span>
+                                <span className="stat-label">Location</span>
                             </div>
                         </div>
                     </div>
@@ -236,24 +266,21 @@ const Dashboard = () => {
                 <section className="dashboard-section">
                     <div className="section-header">
                         <div>
-                            <h2>🔥 Recommended For You</h2>
-                            <p className="text-muted">Based on your interests and activity</p>
+                            <h2>🔥 For You</h2>
+                            <p className="text-muted">Personalized recommendations</p>
                         </div>
-                        <Link to="/activities">
-                            <Button variant="ghost" size="sm">View All →</Button>
-                        </Link>
+                        <Link to="/activities" className="view-all-link">View All →</Link>
                     </div>
 
                     {loading ? (
                         <div className="loading-state">
                             <div className="spinner"></div>
-                            <p className="text-muted">Loading recommendations...</p>
                         </div>
                     ) : recommendations.length === 0 ? (
-                        <div className="empty-state">
-                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&q=80" alt="Get Started" className="empty-image" />
+                        <div className="empty-card">
+                            <div className="empty-icon">🎯</div>
                             <h3>No Recommendations Yet</h3>
-                            <p className="text-muted">Complete your profile to get personalized suggestions</p>
+                            <p>Complete your profile to get personalized suggestions</p>
                             <Link to="/profile/create">
                                 <Button variant="primary">Complete Profile</Button>
                             </Link>
@@ -271,19 +298,16 @@ const Dashboard = () => {
                     )}
                 </section>
 
-                {/* My Created Activities */}
+                {/* My Activities */}
                 {myCreatedActivities.length > 0 && (
                     <section className="dashboard-section">
                         <div className="section-header">
                             <div>
                                 <h2>📋 Your Activities</h2>
-                                <p className="text-muted">Activities you've created</p>
+                                <p className="text-muted">Activities you organized</p>
                             </div>
-                            <Link to="/my-activities">
-                                <Button variant="ghost" size="sm">Manage All →</Button>
-                            </Link>
+                            <Link to="/my-activities" className="view-all-link">Manage →</Link>
                         </div>
-
                         <div className="activities-grid">
                             {myCreatedActivities.slice(0, 3).map((activity) => (
                                 <ActivityCard
@@ -296,15 +320,20 @@ const Dashboard = () => {
                     </section>
                 )}
 
-                {/* Footer CTA - UNIQUE IMAGE */}
-                <div className="footer-cta">
-                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80" alt="Join" className="footer-cta-image" />
-                    <div className="footer-cta-content">
-                        <h2>Ready to create your own activity?</h2>
-                        <p>Bring people together for something amazing</p>
-                        <Button variant="primary" size="lg" onClick={() => navigate('/activities/create')}>
+                {/* CTA Footer */}
+                <div className="cta-footer">
+                    <div className="cta-content">
+                        <h2>Ready to host an activity?</h2>
+                        <p>Bring people together and create memorable experiences</p>
+                        <button className="cta-btn" onClick={() => navigate('/activities/create')}>
                             Create Activity
-                        </Button>
+                            <span>→</span>
+                        </button>
+                    </div>
+                    <div className="cta-decoration">
+                        <div className="cta-circle cta-circle-1"></div>
+                        <div className="cta-circle cta-circle-2"></div>
+                        <div className="cta-circle cta-circle-3"></div>
                     </div>
                 </div>
             </div>
