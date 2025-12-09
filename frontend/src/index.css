@@ -583,7 +583,9 @@ select.input {
   }
 
   .container {
-    padding: 0 var(--spacing-md);
+    padding: 0 12px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .card {
