@@ -68,7 +68,7 @@ const Login = () => {
             <div className="auth-card card fade-in">
                 <div className="auth-header">
                     <div className="auth-logo">
-                        <span className="logo-icon">🔗</span>
+                        <img src="/logo.jpg" alt="SyncUp" className="logo-image" />
                         <span className="logo-text">SyncUp</span>
                     </div>
                     <h1>Welcome Back</h1>

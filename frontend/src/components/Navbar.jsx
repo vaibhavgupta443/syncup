@@ -20,7 +20,7 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <Link to="/" className="navbar-brand">
-                    <span className="brand-icon">🔗</span>
+                    <img src="/logo.jpg" alt="SyncUp" className="brand-logo" />
                     <span className="brand-text">SyncUp</span>
                 </Link>
 
