@@ -919,4 +919,39 @@
     .time-sep {
         font-size: 1rem;
     }
+
+    /* iPhone Full Width Fix */
+    .dashboard-container,
+    .main-content,
+    .quick-match-card,
+    .category-section,
+    .stats-banner,
+    .hosts-section,
+    .countdown-card,
+    .user-stats-grid,
+    .dashboard-section,
+    .cta-footer,
+    .activities-grid {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .quick-match-card,
+    .stats-banner,
+    .countdown-card,
+    .cta-footer {
+        border-radius: 16px;
+    }
+
+    .main-content {
+        padding: 24px 0;
+    }
+
+    .container {
+        padding: 0 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
