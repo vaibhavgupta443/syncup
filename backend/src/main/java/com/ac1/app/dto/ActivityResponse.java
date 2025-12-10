@@ -30,6 +30,9 @@ public class ActivityResponse {
     private Set<String> imageUrls;
     private LocalDateTime createdAt;
 
+    // Category-specific data
+    private String categoryData;
+
     // Creator info
     private Long creatorId;
     private String creatorName;

@@ -47,6 +47,15 @@ public class Activity {
 
     private Double entryFee;
 
+    // Category-specific data stored as JSON
+    // For sports: gameType, positionPreference
+    // For entertainment: genrePreference, language, priceRange
+    // For food: cuisineType, dietaryRestrictions, budgetRange
+    // For study: subject, studyStyle, academicLevel
+    // For travel: tripType, intensityLevel, budgetRange
+    @Column(columnDefinition = "JSON")
+    private String categoryData;
+
     @Enumerated(EnumType.STRING)
     private ActivityStatus status = ActivityStatus.OPEN;
 

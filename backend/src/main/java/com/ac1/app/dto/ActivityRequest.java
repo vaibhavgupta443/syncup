@@ -42,4 +42,7 @@ public class ActivityRequest {
     private Double entryFee;
 
     private Set<String> imageUrls;
+
+    // Category-specific data as JSON string
+    private String categoryData;
 }
