@@ -23,8 +23,9 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
+    z-index: 1001;
 }
 
 .brand-icon {
@@ -33,15 +34,57 @@
     justify-content: center;
 }
 
+.brand-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
 .brand-text {
     font-family: 'Outfit', 'Inter', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 800;
     background: linear-gradient(135deg, #0ea5e9, #06b6d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.5px;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 8px;
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #1a1a1a;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Navigation Menu */
@@ -59,6 +102,7 @@
     font-size: 14px;
     font-weight: 500;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -78,6 +122,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     margin-left: 8px;
+    white-space: nowrap;
 }
 
 .btn-logout:hover {
@@ -96,6 +141,7 @@
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+    white-space: nowrap;
 }
 
 .btn-get-started:hover {
@@ -103,18 +149,82 @@
     box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
 }
 
-/* Responsive */
+/* Menu Overlay */
+.menu-overlay {
+    display: none;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
     .navbar-container {
-        height: 64px;
+        height: 60px;
+        padding: 0 12px;
+    }
+
+    .brand-icon svg {
+        width: 28px;
+        height: 28px;
     }
 
     .brand-text {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
+    }
+
+    /* Show hamburger on mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobile menu - slide from right */
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 80px 24px 32px;
+        gap: 8px;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    .navbar-menu.open {
+        right: 0;
     }
 
     .nav-link {
-        padding: 8px 12px;
-        font-size: 13px;
+        padding: 14px 16px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+
+    .btn-logout {
+        margin-left: 0;
+        margin-top: 16px;
+        padding: 14px 20px;
+        text-align: center;
+    }
+
+    .btn-get-started {
+        margin-top: 8px;
+        padding: 14px 24px;
+        text-align: center;
+    }
+
+    /* Show overlay when menu is open */
+    .menu-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
     }
 }

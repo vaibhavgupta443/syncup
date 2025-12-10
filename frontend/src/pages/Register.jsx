@@ -104,7 +104,18 @@ const Register = () => {
                 <div className="auth-card card fade-in">
                     <div className="auth-header">
                         <div className="auth-logo">
-                            <img src="/logo.jpg" alt="SyncUp" className="logo-image" />
+                            <svg width="44" height="44" viewBox="0 0 36 36" fill="none">
+                                <defs>
+                                    <linearGradient id="regBrandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#0ea5e9" />
+                                        <stop offset="100%" stopColor="#06b6d4" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="18" cy="18" r="16" fill="url(#regBrandGradient)" />
+                                <path d="M12 14C12 14 14 18 18 18C22 18 24 14 24 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                                <path d="M12 22C12 22 14 18 18 18C22 18 24 22 24 22" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                                <circle cx="18" cy="18" r="3" fill="white" />
+                            </svg>
                             <span className="logo-text">SyncUp</span>
                         </div>
                         <h1>Create Account</h1>

@@ -1,20 +1,25 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/slices/authSlice';
 import '../styles/Navbar.css';
 
 /**
- * Main navigation bar with professional blue branding.
+ * Main navigation bar with hamburger menu for mobile.
  */
 const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { user, isAuthenticated } = useSelector((state) => state.auth);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleLogout = () => {
         dispatch(logout());
         navigate('/login');
+        setMenuOpen(false);
     };
+
+    const closeMenu = () => setMenuOpen(false);
 
     return (
         <nav className="navbar">
@@ -37,12 +42,24 @@ const Navbar = () => {
                     <span className="brand-text">SyncUp</span>
                 </Link>
 
+                {/* Hamburger Menu Button - Mobile Only */}
+                <button
+                    className={`hamburger ${menuOpen ? 'active' : ''}`}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                {/* Navigation Menu */}
                 {isAuthenticated && (
-                    <div className="navbar-menu">
-                        <Link to="/dashboard" className="nav-link">Dashboard</Link>
-                        <Link to="/activities" className="nav-link">Explore</Link>
-                        <Link to="/my-activities" className="nav-link">My Activities</Link>
-                        <Link to="/profile" className="nav-link">Profile</Link>
+                    <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
+                        <Link to="/dashboard" className="nav-link" onClick={closeMenu}>Dashboard</Link>
+                        <Link to="/activities" className="nav-link" onClick={closeMenu}>Explore</Link>
+                        <Link to="/my-activities" className="nav-link" onClick={closeMenu}>My Activities</Link>
+                        <Link to="/profile" className="nav-link" onClick={closeMenu}>Profile</Link>
                         <button onClick={handleLogout} className="btn-logout">
                             Logout
                         </button>
@@ -50,12 +67,15 @@ const Navbar = () => {
                 )}
 
                 {!isAuthenticated && (
-                    <div className="navbar-menu">
-                        <Link to="/login" className="nav-link">Login</Link>
-                        <Link to="/register" className="btn-get-started">Get Started</Link>
+                    <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
+                        <Link to="/login" className="nav-link" onClick={closeMenu}>Login</Link>
+                        <Link to="/register" className="btn-get-started" onClick={closeMenu}>Get Started</Link>
                     </div>
                 )}
             </div>
+
+            {/* Overlay for mobile menu */}
+            {menuOpen && <div className="menu-overlay" onClick={closeMenu}></div>}
         </nav>
     );
 };
