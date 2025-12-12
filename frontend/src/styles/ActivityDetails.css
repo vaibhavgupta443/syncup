@@ -36,8 +36,8 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(to top,
-            rgba(14, 165, 233, 0.95) 0%,
-            rgba(6, 182, 212, 0.7) 50%,
+            rgba(4, 48, 71, 0.95) 0%,
+            rgba(3, 44, 52, 0.7) 50%,
             rgba(0, 0, 0, 0.4) 100%);
     display: flex;
     align-items: flex-end;

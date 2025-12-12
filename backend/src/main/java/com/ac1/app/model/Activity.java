@@ -3,6 +3,8 @@ package com.ac1.app.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,6 +56,7 @@ public class Activity {
     // For study: subject, studyStyle, academicLevel
     // For travel: tripType, intensityLevel, budgetRange
     @Column(columnDefinition = "JSON")
+    @JdbcTypeCode(SqlTypes.JSON)
     private String categoryData;
 
     @Enumerated(EnumType.STRING)
